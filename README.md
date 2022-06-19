@@ -18,12 +18,15 @@ import 'package:connectivity_bloc/connectivity_bloc.dart';
 
 ## Usage
 
-1. Create and provide the bloc to your widget using BlocProvider
+1. Install [flutter_bloc](https://pub.dev/packages/flutter_bloc) dependency with this command ```flutter pub add flutter_bloc```
+
+2. Create and provide the bloc to your widget using BlocProvider
 
 ___I suggest to provide it from the main child then all his children will access to the bloc object___
 
 ```dart
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:connectivity_bloc/connectivity_bloc.dart';
 
 void main() => runApp(const MyApp());
