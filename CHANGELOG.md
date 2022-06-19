@@ -1,5 +1,5 @@
-## 0.0.1
+## 0.0.2
 
 ## Features
 
-- You can continuously check the connection state in an application.
+- Usage example updated
