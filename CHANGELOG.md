@@ -1,5 +1,5 @@
-## 0.0.2
+## 0.0.3
 
 ## Features
 
-- Usage example updated
+- Dependencies upgrades and documentation
