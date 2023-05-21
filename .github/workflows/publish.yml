@@ -1,0 +1,29 @@
+on:
+    release:
+      branches:
+        - main
+jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - name: Install Flutter
+          uses: subosito/flutter-action@v2
+          with:
+            flutter-version: '3.10.1'
+        - name: Install dependencies
+          run: flutter pub get
+        - name: Analyze
+          run: flutter analyze
+        # - name: Run tests
+        #   run: flutter test
+        - name: Format code
+          run: dart format --fix .
+        - name: Check Publish Warnings
+          run: dart pub publish --dry-run
+        - name: Publish
+          uses: k-paxian/dart-package-publisher@v1.5.1
+          with:
+            credentialJson: ${{ secrets.PUB_CREDENTIALS }}
+            flutter: true
+            skipTests: true
