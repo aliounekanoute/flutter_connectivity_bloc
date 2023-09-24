@@ -1,9 +1,9 @@
 import 'dart:async';
-
+import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:http/http.dart' as http;
 part 'connectivity_event.dart';
 part 'connectivity_state.dart';
 
@@ -24,18 +24,29 @@ class ConnectivityBloc extends Bloc<ConnectivityEvent, ConnectivityState> {
     // Subscribe to connectivity changes using the `Connectivity` plugin.
     subscription = Connectivity()
         .onConnectivityChanged
-        .listen((ConnectivityResult result) {
-      if (result == ConnectivityResult.mobile ||
-          result == ConnectivityResult.wifi) {
-        // If the connectivity result is mobile or wifi, add an 'OnConnectivityEvent'.
-        add(OnConnectivityEvent());
+        .listen((ConnectivityResult result) async {
+      if (result != ConnectivityResult.none) {
+        // If the connectivity result is none , verify if device really have access to network.
+        try
+        {
+          final response = await http.get(Uri.parse('https://www.google.com'));
+          if(response.statusCode==200)
+          {
+            add(OnConnectivityEvent());
+          }
+        }
+        on SocketException catch(_)
+        {
+          add(OnNotConnectivityEvent());
+        }
+
       } else {
         // Otherwise, add an 'OnNotConnectivityEvent'.
         add(OnNotConnectivityEvent());
       }
     });
   }
-  
+
   /// Closes the BLoC and performs necessary cleanup.
   @override
   Future<void> close() {
