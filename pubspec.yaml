@@ -1,6 +1,6 @@
 name: connectivity_bloc
 description: A new flutter package that allows to continuously check the connection state in an application. Supportes IOS and Android
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/aliounekanoute/flutter_connectivity_bloc
 
 environment:
@@ -8,16 +8,16 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  connectivity_plus: ^4.0.1
+  connectivity_plus: ^6.1.4
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.0.1
+  flutter_bloc: ^9.1.1
   http: ^1.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.1
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
