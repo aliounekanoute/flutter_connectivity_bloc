@@ -3,7 +3,6 @@
 ## Updated on: 2025-05-03
 ### Last Commit Author: aliounekanoute
 
-
 - fix(connectvity_plu): updgrade version, fix stream listener
 - docs(changelog): some update)
 - Merge branch 'main' of github.com:aliounekanoute/flutter_connectivity_bloc into release/v-0.0.4
