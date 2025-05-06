@@ -15,7 +15,7 @@ class ConnectivityBloc extends Bloc<ConnectivityEvent, ConnectivityState> {
   StreamSubscription<List<ConnectivityResult>>? subscription;
 
   /// Constructs a new instance of the `ConnectivityBloc`.
-  /// 
+  ///
   /// Initializes the state to [ConnectivityInitialState], sets up
   /// event handlers for connectivity success/failure, and
   /// subscribes to the connectivity change stream.
@@ -33,20 +33,20 @@ class ConnectivityBloc extends Bloc<ConnectivityEvent, ConnectivityState> {
     );
 
     // Listen to the platform connectivity stream.
-    subscription = Connectivity()
-        .onConnectivityChanged
-        .listen(_handleConnectivityChange);
+    subscription =
+        Connectivity().onConnectivityChanged.listen(_handleConnectivityChange);
   }
 
   /// Internal handler for processing connectivity change notifications.
   ///
   /// - `results`: a list of `ConnectivityResult` values emitted by the plugin.
-  /// 
+  ///
   /// Checks if any connection type besides `none` is available. If so,
   /// performs a lightweight HTTP GET to Google to verify real internet access.
   /// Depending on the outcome, dispatches either [OnConnectivityEvent]
   /// or [OnNotConnectivityEvent].
-  Future<void> _handleConnectivityChange(List<ConnectivityResult> results) async {
+  Future<void> _handleConnectivityChange(
+      List<ConnectivityResult> results) async {
     final hasNetwork = results.any((r) => r != ConnectivityResult.none);
 
     if (hasNetwork) {
